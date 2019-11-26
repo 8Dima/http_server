@@ -27,7 +27,7 @@ try:
 	sock.bind(('',80))
 	print("Using port 80")
 except OSError:
-	sock.bind(('', 8081))
+	sock.bind(('', 8080))
 	print("Using port 8080")
 
 sock.listen(5)
@@ -39,13 +39,11 @@ while True:
 	msg = data.decode()
 	print(msg)
 
-	print(http_format_date())
-
 	filename = msg.split()[1:2][0][1:]
 	if filename == "":
 		filename = 'index.html'
 
-		resp = """HTTP/1.1 200 OK
+	resp = """HTTP/1.1 200 OK
 Server: SelfMadeServer v0.0.1
 Content-type: text/html
 """
